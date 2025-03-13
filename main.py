@@ -41,7 +41,7 @@ def processCommand(c):
 
     else:
         # let OpenAI handle the request
-        
+        pass
 
 
 
