@@ -1,9 +1,12 @@
 import speech_recognition as sr
 import webbrowser
 import pyttsx3
+import musicLibrary as mL
+# import requests
 
 recognizer = sr.Recognizer()
 engine = pyttsx3.init()
+newsapi = " add the api key here "
 
 def talk(words):
     engine.say(words) # Queue a command to speak an utterance
@@ -21,6 +24,27 @@ def processCommand(c):
         webbrowser.open("https://www.twitter.com")
     elif "Open LinkedIn" in c.lower():
         webbrowser.open("https://www.linkedin.com")
+    elif c.lower().startswith("play"):
+        song = c.lower().split(" ")[1] # This will get the song name
+        link = mL.music[song]
+        webbrowser.open(link)
+
+    # Edit this section later (9:59:18)
+    # get the api from newsapi.org
+    # elif "news" in c.lower():
+    #   r = requests.get(f"newsapi link ={newsapi}")
+    #   if r.status_code == 200:
+    #   data = r.json()
+    #   articles = data.get("articles", [])
+    #   for article in articles:
+    #   talk(article['title'])
+
+    else:
+        # let OpenAI handle the request
+        
+
+
+
 
 if __name__ == "__main__":
     talk("Hello!I'm Oval. How can I help you?")
